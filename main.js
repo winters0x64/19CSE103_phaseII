@@ -25,3 +25,20 @@ document.addEventListener('submit',(e)=>{
 })
 
 
+function createRaindrops() {
+    const rainContainer = document.querySelector('.rain');
+    const dropCount = 25;
+  
+    for (let i = 0; i < dropCount; i++) {
+      const drop = document.createElement('div');
+      drop.className = 'drop';
+      drop.style.left = `${Math.random() * 100}%`;
+      drop.style.animationDelay = `${Math.random()}s`;
+      rainContainer.appendChild(drop);
+    }
+  }
+  
+  // Запускаємо створення крапель дощу під час завантаження сторінки
+window.addEventListener('load', createRaindrops);
+
+
