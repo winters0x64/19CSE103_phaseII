@@ -6,14 +6,16 @@ console.log("hi")
 let inp = document.getElementById("movie_name");
 
 let createForm = (data)=>{
-    var x = document.getElementById("data")
+    let x = document.getElementById("data")
+    let y = document.getElementById("popup")
+
     if (x) x.remove()
     let content = document.createElement("div");
     content.id  = "data"
     content.innerHTML += `<img src=${data.Poster} onerror=alert("Failed to load Image")>`
     content.innerHTML += `<h4>Movie Name : ${data.Title}</h4><br>`+`<h4>Release Year : ${data.Year}</h4><br>`+ `<h4>Genre : ${data.Genre}</h4><br>`
     content.innerHTML += `<h4>Plot : ${data.Plot}</h4><br>`+`<h4>Actors : ${data.Actors}</h4><br>`
-    document.body.appendChild(content)
+    y.appendChild(content)
 }
 
 document.addEventListener('submit',(e)=>{
