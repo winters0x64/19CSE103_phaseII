@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #popup{
     background-color: red;
     height: 30rem;
@@ -17,3 +18,101 @@
         opacity: 1;
      }
 }
+=======
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #DE0000; /* Neon red background color */
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.5), transparent 100%), url('smoky-background.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  
+  #main_container {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black background for the container */
+    border-radius: 10px;
+  }
+  
+  #main_title {
+    font-family: 'Montserrat', sans-serif;
+    color:white; /* Black text color */
+    text-shadow: 2px 2px 5px rgba(128, 128, 128, 0.8); /* Gray shadow for the text */
+  }
+  #subbutton{
+    color:white;
+
+  }
+  #movie_name{
+    color: grey;
+  }
+  
+  #which_movie {
+    color: grey; /* White text color */
+    margin-top: 10px;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  input[type="text"] {
+    
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  input[type="submit"] {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+  .rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .drop {
+    position: absolute;
+    width: 1px;
+    height: 60px;
+    background-color: #fff;
+    animation: rain-fall 1s linear infinite;
+  }
+  
+  @keyframes rain-fall {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 1;
+    }
+  }
+  #data
+  {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-shadow:2px 2px 5px rgba(128, 128, 128, 0.8); ;
+}
+  
+>>>>>>> 396d8ad5a83b7cbe6ae97031e84e29c5ac18166c
