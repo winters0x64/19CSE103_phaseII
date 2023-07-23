@@ -25,12 +25,47 @@ body {
     color:white; /* Black text color */
     text-shadow: 2px 2px 5px rgba(128, 128, 128, 0.8); /* Gray shadow for the text */
   }
-  #subbutton{
-    color:white;
+  /* Styling for the button */
+#subbutton {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 1em;
+  padding: 1em 2em;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  background-color: #DE0000;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: box-shadow 1s ease-in-out;
+  box-shadow: 0 0 8px rgba(255, 0, 130, 0.5);
+}
 
+/* Animation for glowing effect on hover */
+#subbutton:hover {
+  animation: neonGlow 5s infinite;
+  box-shadow: 0 0 20px rgba(255, 0, 130, 0.9), 0 0 30px rgba(255, 0, 130, 0.6);
+}
+
+/* Keyframes for the glow effect */
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 8px rgba(255, 0, 130, 0.5);
   }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 130, 0.9), 0 0 30px rgba(255, 0, 130, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(255, 0, 130, 0.5);
+  }
+}
+
   #movie_name{
     color: grey;
+    width: 300px;
+    height:35px;
+    font-family: 'Montserrat', sans-serif;
   }
   
   #which_movie {
@@ -44,14 +79,14 @@ body {
   
   input[type="text"] {
     
-    padding: 8px;
+    padding: 8px 8px;
     font-size: 16px;
     border-radius: 5px;
     border: none;
   }
   
   input[type="submit"] {
-    padding: 8px 16px;
+    padding: 8px 8px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
