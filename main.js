@@ -6,7 +6,9 @@ console.log("hi")
 let inp = document.getElementById("movie_name");
 
 let createForm = (data)=>{
-    var x = document.getElementById("data")
+    let x = document.getElementById("data")
+    let y = document.getElementById("popup")
+
     if (x) x.remove()
     let content = document.createElement("div");
     content.id  = "data"
@@ -38,7 +40,6 @@ function createRaindrops() {
     }
   }
   
-  // Запускаємо створення крапель дощу під час завантаження сторінки
 window.addEventListener('load', createRaindrops);
 
 
