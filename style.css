@@ -166,13 +166,7 @@ body {
   background-color: #000;
  
 }
-canvas {
-   position: relative; 
-   width: 1000px;
-   height:1000px;
-   right:15.9em;
-   top: 5px;
-}  
+
 #explode{
   position: relative;
   right: 77rem;
