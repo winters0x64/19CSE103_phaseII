@@ -159,17 +159,23 @@ body {
     padding: 0;
 }
 #leftpanel{
-  position:absolute ;
+  position:relative;
   right:1871px;
   height:1000px;
   width:49.3px;
   background-color: #000;
-  opacity: 60%; 
+ 
 }
-canvas { position: relative; }
+canvas {
+   position: relative; 
+   width: 1000px;
+   height:1000px;
+   right:15.9em;
+   top: 5px;
+}  
 #explode{
   position: relative;
-  right: 75.4rem;
+  right: 77rem;
   top: 23rem;
 }
 
