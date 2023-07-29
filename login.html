@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="./Style2.css">
+    </head>
+    <body>
+        <div class="login-box">
+            <h2>Login</h2>
+            <form>
+              <div class="user-box">
+                <input type="text" name="" id="ok" required="true">
+                <label>Username</label>
+              </div>
+              <div class="user-box">
+                <input id="pass" type="password" name="" required="true">
+                <label>Password</label>
+              </div>
+              <a id="sub">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+              </a>
+            </form>
+          </div>
+          <script>
+            let x  = document.getElementById("ok");
+            let z  = document.getElementById("pass");
+            let y = document.getElementById("sub")
+            y.addEventListener("click",(e)=>{
+                if(x.value == '' || z.value == '' ){
+                    alert("No username or password")
+                    location.reload()
+                }
+                else{
+                    location.href="/index.html"
+                }
+            })
+          </script>
+    </body>
+</html>
