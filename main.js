@@ -1,24 +1,19 @@
+// API key declaration
 const apikey = "e6e95ac1"
 const base_uri = "https://www.omdbapi.com/?apikey="
 
-console.log("hi")
-
+// Movie info loading logic
 let inp = document.getElementById("movie_name");
-
 let createForm = (data)=>{
     let x = document.getElementById("data")
-    let y = document.getElementById("popup")
-
     if (x) x.remove()
     let content = document.createElement("div");
     content.id  = "data"
-    content.innerHTML += `<button id="close" onclick=${close()}>X</button>`
     content.innerHTML += `<img src=${data.Poster} onerror=alert("Failed to load Image")>`
     content.innerHTML += `<h4>Movie Name : ${data.Title}</h4><br>`+`<h4>Release Year : ${data.Year}</h4><br>`+ `<h4>Genre : ${data.Genre}</h4><br>`
     content.innerHTML += `<h4>Plot : ${data.Plot}</h4><br>`+`<h4>Actors : ${data.Actors}</h4><br>`
     document.body.appendChild(content)
 }
-
 document.addEventListener('submit',(e)=>{
     e.preventDefault()
     fetch(base_uri+apikey+'&t='+inp.value)
@@ -28,10 +23,7 @@ document.addEventListener('submit',(e)=>{
 })
 
 
-function close(){
-  alert(2)
-}
-
+// Background rain drops
 function createRaindrops() {
     const rainContainer = document.querySelector('.rain');
     const dropCount = 25;
@@ -43,8 +35,6 @@ function createRaindrops() {
       rainContainer.appendChild(drop);
     }
   }
-  
-
 window.addEventListener('load', createRaindrops);
 var PARTICLE_NUM = 500;
 var PARTICLE_BASE_RADIUS = 0.5;
@@ -167,16 +157,9 @@ function randomizeParticle(p) {
     p.z = Math.random() * 1500 + 500;
     return p;
 }
-
-
-/**
- * Particle
- */
 function Particle(x, y, z) {
     this.x = x || 0;
     this.y = y || 0;
     this.z = z || 0;
     this.pastZ = 0;
 }
-
-
