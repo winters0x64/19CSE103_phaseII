@@ -5,18 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info</title>
     <style>
-        body { background-color: hsl(256, 100%, 5%); font: 30px sans-serif; }
-        canvas { position: absolute; }
-        #frame{
-            z-index: 10px;
+        body {
+            margin: 0; 
         }
+
+        canvas#c {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1; 
+        }
+        @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+        p {
+        border-right: solid 3px black;
+        white-space: nowrap;
+        overflow: hidden;    
+        font-family: 'Source Code Pro', monospace;  
+        font-size: 28px;
+        color: rgba(255,255,255,.70);
+        }
+
+        /* Animation */
+        p {
+        animation: animated-text 4s steps(29,end) 1s 1 normal both,
+                    animated-cursor 600ms steps(29,end) 5s;
+        }
+
+        /* text animation */
+
+        @keyframes animated-text{
+        from{width: 0;}
+        to{width: 472px;}
+        }
+
+        /* cursor animations */
+
+        
+
     </style>
-    <script>var PARTICLE_NUM = 500;
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-dark">
+    <canvas id='c'></canvas>        
+    <div class="text-center">
+        <table class="table table-borderless table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Arun Krishnan</p></td>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Backend, html, CSS, topg<p></td>
+                </tr>
+                <tr>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Chandra B Nair</p></td>
+                    <td class="text-left text-white" style="padding: 30px;"><p>CSS, Aesthetics</p></td>
+                </tr>
+                <tr>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Rohith G</p></td>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Responsiveness, CSS</p></td>
+                </tr>
+                <tr>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Abhinav</p></td>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Ideas, Aesthetics,CSS</p></td>
+                </tr>
+                <tr>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Navaneeth</p></td>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Logos, Design</p></td>
+                </tr>
+                <tr>
+                    <td class="text-left text-white" style="padding: 30px;"><p>Sandhra</p></td>
+                    <td class="text-left text-white" style="padding: 30px;"><p>html, CSS</p></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+        <br>
+        <iframe width="560" height="315" style="border-radius: 15px" src="https://www.youtube.com/embed/k3UevKvP9RU?controls=0&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <script>
+        var PARTICLE_NUM = 500;
         var PARTICLE_BASE_RADIUS = 0.5;
         var FL = 500;
         var DEFAULT_SPEED = 2;
         var BOOST_SPEED = 300;
-        
+
         var canvas;
         var canvasWidth, canvasHeight;
         var context;
@@ -25,10 +102,10 @@
         var speed = DEFAULT_SPEED;
         var targetSpeed = DEFAULT_SPEED;
         var particles = [];
-        
+
         window.addEventListener('load', function() {
             canvas = document.getElementById('c');
-            
+
             var resize = function() {
                 canvasWidth  = canvas.width = window.innerWidth;
                 canvasHeight = canvas.height = window.innerHeight;
@@ -37,86 +114,86 @@
                 context = canvas.getContext('2d');
                 context.fillStyle = 'rgb(255, 255, 255)';
             };
-            
+
             document.addEventListener('resize', resize);
             resize();
-            
+
             mouseX = centerX;
             mouseY = centerY;
-            
+
             for (var i = 0, p; i < PARTICLE_NUM; i++) {
                 particles[i] = randomizeParticle(new Particle());
                 particles[i].z -= 500 * Math.random();
             }
-            
+
             document.addEventListener('mousemove', function(e) {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
             }, false);
-            
+
             document.addEventListener('mousedown', function(e) {
                 targetSpeed = BOOST_SPEED;
             }, false);
-            
+
             document.addEventListener('mouseup', function(d) {
                 targetSpeed = DEFAULT_SPEED;
             }, false);
-            
+
             setInterval(loop, 1000 / 60);
         }, false);
-        
+
         function loop() {
             context.save();
             context.fillStyle = 'rgb(0, 0, 0)';
             context.fillRect(0, 0, canvasWidth, canvasHeight);
             context.restore();
-            
+
             speed += (targetSpeed - speed) * 0.01;
-            
+
             var p;
             var cx, cy;
             var rx, ry;
             var f, x, y, r;
             var pf, px, py, pr;
             var a, a1, a2;
-            
+
             var halfPi = Math.PI * 0.5;
             var atan2  = Math.atan2;
             var cos    = Math.cos;
             var sin    = Math.sin;
-            
+
             context.beginPath();
             for (var i = 0; i < PARTICLE_NUM; i++) {
                 p = particles[i];
-                
+
                 p.pastZ = p.z;
                 p.z -= speed;
-                
+
                 if (p.z <= 0) {
                     randomizeParticle(p);
                     continue;
                 }
-                
+
                 cx = centerX - (mouseX - centerX) * 1.25;
                 cy = centerY - (mouseY - centerY) * 1.25;
-                
+
                 rx = p.x - cx;
                 ry = p.y - cy;
-                
+
                 f = FL / p.z;
                 x = cx + rx * f;
                 y = cy + ry * f;
                 r = PARTICLE_BASE_RADIUS * f;
-                
+
                 pf = FL / p.pastZ;
                 px = cx + rx * pf;
                 py = cy + ry * pf;
                 pr = PARTICLE_BASE_RADIUS * pf;
-                
+
                 a  = atan2(py - y, px - x);
                 a1 = a + halfPi;
                 a2 = a - halfPi;
-                
+
                 context.moveTo(px + pr * cos(a1), py + pr * sin(a1));
                 context.arc(px, py, pr, a1, a2, true);
                 context.lineTo(x + r * cos(a2), y + r * sin(a2));
@@ -125,64 +202,22 @@
             }
             context.fill();
         }
-        
+
         function randomizeParticle(p) {
             p.x = Math.random() * canvasWidth;
             p.y = Math.random() * canvasHeight;
             p.z = Math.random() * 1500 + 500;
             return p;
         }
-        
-        
-        /**
-         * Particle
-         */
+
         function Particle(x, y, z) {
             this.x = x || 0;
             this.y = y || 0;
             this.z = z || 0;
             this.pastZ = 0;
         }
-        </script>
+    </script>
 
-    <!-- Add Bootstrap CSS link -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-        <canvas id='c' hidden="true"></canvas>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Members</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Arun Krishnan</td>
-                </tr>
-                <tr>
-                    <td>Chandra B Nair</td>
-                </tr>
-                <tr>
-                    <td>Rohith G</td>
-                </tr>
-                <tr>
-                    <td>Abhinav</td>
-                </tr>
-                <tr>
-                    <td>Navaneeth</td>
-                </tr>
-                <tr>
-                    <td>Sandhra</td>
-                </tr>
-            </tbody>
-        </table>
-        <canvas id='c'></canvas>
-        <div class="text-center">
-            <iframe id="frame" src="./index.html" class="border-0" style="height: 800px; width: 800px;"></iframe>
-        </div>
-    </div>
-    <!-- Add Bootstrap JS and jQuery (required for some Bootstrap features) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
