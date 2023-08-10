@@ -26,6 +26,11 @@ document.addEventListener('submit',(e)=>{
     .catch(err=>console.log(err))
 })
 
+document.body.addEventListener("click",()=>{
+    let data = document.getElementById("data");
+    
+    if (data) data.remove()
+})
 
 function createRaindrops() {
     const rainContainer = document.querySelector('.rain');
